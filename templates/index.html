@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body>
+<div ng-app="main" ng-controller="index">
+    <div class="container">
+        <h2>CONSULTAR</h2>
+        <div class="row" ng-hide="!dadosConsulta">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Sistema</th>
+                        <th>Situação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="entrada in dadosConsulta">
+                        <td ng-repeat="dado in entrada">// dado //</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <input type="button" class="btn btn-lg btn-primary" style="margin: 5px; text-align: center"
+               value="Consultar" ng-click="consultar()">
+    </div>
+    <div class="container">
+        <h2>CRIAR/ALTERAR</h2>
+        <form novalidate class="simple-form">
+            <label>ID: <input type="number" ng-model="dadosAlterar[0]"/></label><br/>
+            <label>Nome: <input maxlength="64" type="text" ng-model="dadosAlterar[1]"/></label><br/>
+            <label>Data: <input type="date" ng-model="dadosAlterar[2]"/></label><br/>
+            <label>Sistema: <input maxlength="10" type="text" ng-model="dadosAlterar[3]"/></label><br/>
+            <label>Situação: <input maxlength="3" type="text" ng-model="dadosAlterar[4]"/></label><br/>
+        </form>
+        <input type="submit" class="btn btn-lg btn-primary" style="margin: 5px; text-align: center"
+               value="Alterar" ng-click="alterar()">
+        <br>
+        <span ng-model="mensagemAlterar">// mensagemAlterar //</span>
+    </div>
+    <div class="container">
+        <h2>DELETAR</h2>
+        <div class="row" ng-hide="!dadosConsulta">
+            <div class="col-md-12">
+                <form novalidate class="simple-form">
+                    <label>ID: <input type="number" ng-model="idDeletar"/></label><br/>
+                </form>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-lg btn-primary" style="margin: 5px; text-align: center"
+               value="Deletar" ng-click="deletar()">
+        <br>
+        <span ng-hide=!mensagemDeletar ng-model="mensagemDeletar">// mensagemDeletar //</span>
+    </div>
+    <div class="container">
+        <h2>RELATORIO</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Sistema</th>
+                        <th>Situação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="entradaRelatorio in dadosRelatorio">
+                        <td ng-repeat="dadoRelatorio in entradaRelatorio">// dadoRelatorio //</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <input type="button" class="btn btn-lg btn-primary" style="margin: 5px; text-align: center"
+               value="Gerar relatório" ng-click="relatorio()">
+        <br>
+        <span ng-hide=!mensagemRelatorio ng-model="mensagemRelatorio">// mensagemRelatorio//</span>
+    </div>
+    <div class="container">
+        <h2>APROVAR SISTEMA</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Sistema</th>
+                        <th>Situação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="entradaSistema in dadosSistema">
+                        <td ng-repeat="dadoSistema in entradaSistema">// dadoSistema //</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <input type="button" class="btn btn-lg btn-primary" style="margin: 5px; text-align: center"
+               value="Atualizar Sistema" ng-click="sistema()">
+        <br>
+        <span ng-hide=!mensagemSistema ng-model="mensagemSistema">// mensagemSistema //</span>
+    </div>
+</div>
+</body>
+</html>

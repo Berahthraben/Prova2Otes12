@@ -1,0 +1,14 @@
+CREATE TABLE Dados (
+	id serial NOT NULL,
+	nome varchar(64) NOT NULL,
+	data date NOT NULL,
+	sistema varchar(10) NOT NULL,
+	situacao varchar(3) NOT NULL,
+	PRIMARY KEY(id)
+);
+
+INSERT INTO Dados VALUES (101, 'Jose Salgado', '07/25/2020', 'Estoque', 'COM');
+INSERT INTO Dados VALUES (102, 'Sergio Amaral', '04/15/2020', 'Compras', 'EA');
+INSERT INTO Dados VALUES (103, 'Fernando Nobrega', '03/12/2020', 'Vendas', 'AP');
+INSERT INTO Dados VALUES (104, 'Cristovão Silva', '03/03/2020', 'Compras', 'AP');
+INSERT INTO Dados VALUES (105, 'Julia Albercht', '06/21/2020', 'Vendas', 'EA');

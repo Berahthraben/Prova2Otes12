@@ -1,0 +1,12 @@
+
+DEPARTAMENTO DE COMPRAS
+...ID || NOME || DATA || SITUAÇÃO
+......104 || Cristovão Silva || 2020-03-03 || Compras || AP
+......102 || Sergio Amaral || 2020-04-15 || Compras || EA
+DEPARTAMENTO DE VENDAS
+...ID || NOME || DATA || SITUAÇÃO
+......103 || Fernando Nobrega || 2020-03-12 || Vendas || AP
+......105 || Julia Albercht || 2020-06-21 || Vendas || EA
+DEPARTAMENTO DE ESTOQUE
+...ID || NOME || DATA || SITUAÇÃO
+FIM RELATÓRIO
